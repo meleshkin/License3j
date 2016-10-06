@@ -494,6 +494,7 @@ public class License {
 		return pgpPrivKey;
 	}
 
+	@SuppressWarnings("unchecked")
 	private void setHashedSubpackets(
 			final PGPSignatureGenerator signatureGenerator) {
 		final Iterator<String> it = key.getPublicKey().getUserIDs();

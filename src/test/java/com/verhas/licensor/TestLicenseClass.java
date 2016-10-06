@@ -279,7 +279,8 @@ public class TestLicenseClass {
         Assert.assertEquals(digestReference, s);
     }
 
-    @Test
+    @SuppressWarnings("deprecation")
+	@Test
     public void testMain() throws IOException, PGPException,
             NoSuchAlgorithmException, NoSuchProviderException,
             SignatureException, Exception {

@@ -47,6 +47,7 @@ public class License3j {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	private void decode() throws Exception {
 		try {
 			final License license;
