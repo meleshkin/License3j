@@ -12,8 +12,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.Security;
@@ -618,6 +620,26 @@ public class License {
 	public License setLicenseEncodedFromFile(final String fileName)
 			throws FileNotFoundException, IOException, PGPException {
 		setLicenseEncodedFromFile(fileName, null);
+		return this;
+	}
+	
+	/**
+	 * Set the license values from a clear text file. The file has to be a
+	 * properties file.
+	 *
+	 * @param path
+	 *            path to the file to read the license data.
+	 * @param encoding
+	 *            plain file encoding			
+	 * @return {@code this}
+	 * @throws IOException
+	 *             when the file can not be read
+	 */
+	public License setLicense(final String path, final String encoding) throws IOException {
+		verified = false;
+		Charset charset = Charset.forName(encoding);
+		licenseProperties = new Properties();
+		licenseProperties.load(new InputStreamReader(new FileInputStream(path), charset));
 		return this;
 	}
 
